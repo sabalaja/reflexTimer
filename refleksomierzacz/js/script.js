@@ -2,6 +2,8 @@ const colors = ['ff5733', '33ffa2', '3393ff', 'ff337a', '0e7658'];
 let clickStart;
 let clickStop;
 let thisColor;
+let clickCounts = 0;
+const timeCollection = new Map();
 const reactionTimeArr = [];
 
 
@@ -9,39 +11,52 @@ const reactionTimeArr = [];
 function start() {
     document.getElementById('stopBtn').style.visibility = "visible";
     document.getElementById('startBtn').style.visibility = "hidden";
-    colors.forEach(color => {
-        setTimeout(function() {
-            clickStart = {color, timeStart: Date.now()};
-            thisColor = color;
-            document.getElementById('mainContainer').style.backgroundColor = `#${color}`;
-        }, Math.random()*10000);
-
-    });
-
-
-    // setTimeout(() => {
-
-    //     document.getElementById("fastestScore").innerText = getTheFastest();
-    //     document.getElementById("averageScore").innerText = getAverage();
-    //     document.getElementById("slowestScore").innerText = getTheSlowest();
-    // })
-    console.log('tu')
+    setTimeout(function() {
+        document.getElementById('mainContainer').style.backgroundColor = `#${colors[clickCounts]}`;
+        clickStart = Date.now();
+        clickCounts++;
+        thisColor = colors[clickCounts];
+        console.log('clickcounta', clickCounts)
+        if (clickCounts===5) {
+            document.getElementById("fastestScore").innerText = getTheFastest();
+            document.getElementById("averageScore").innerText = getAverage();
+            document.getElementById("slowestScore").innerText = getTheSlowest();
+        }
+    }, Math.random()*1000);
 }
+
+// do kazdego czasu dajemy poczatek przy zmianie i klikniecie pozniej 
+// flaga po zmianie koloru 
+// ustawianie timeout po kliknieciu
 
 function containerClick() {
     if(!thisColor) {
         alert("Poczekaj na kolor");
         return;
     }
+
     clickStop = Date.now();
-    console.log('click', thisColor, clickStart)
-    let reactionTime = clickStop - clickStart.timeStart; 
+    let reactionTime = clickStop - clickStart; 
     reactionTimeArr.push(reactionTime);
-    console.log('reaction time', reactionTime, reactionTimeArr);
+    clickStart = 0;
+    clickStop = 0;
+    setTimeout(function() {
+        document.getElementById('mainContainer').style.backgroundColor = `#${colors[clickCounts]}`;
+        clickStart = Date.now();
+        thisColor = colors[clickCounts];
+        clickCounts++;
+        console.log('clickcount', clickCounts)
+        if (clickCounts>=5) {
+            document.getElementById("fastestScore").innerText = getTheFastest();
+            document.getElementById("averageScore").innerText = getAverage();
+            document.getElementById("slowestScore").innerText = getTheSlowest();
+        }
+    }, Math.random()*1000);
+    
 }
 
 function getTheFastest() {
-    return `${Math.min(reactionTimeArr)}`;
+    return `${Math.min(...reactionTimeArr)}`;
 }
 
 function getAverage() {
@@ -49,7 +64,7 @@ function getAverage() {
 }
 
 function getTheSlowest() {
-    return `${Math.max(reactionTimeArr)}`;
+    return `${Math.max(...reactionTimeArr)}`;
 }
 
 function stop() {
