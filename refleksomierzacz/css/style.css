@@ -1,0 +1,56 @@
+html {
+    all: revert;
+}
+
+body {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 98vh;
+}
+
+.button-conatiner {
+    display: flex;
+}
+
+.button {
+    all: unset;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: royalblue;
+    padding: 5px;
+    color: white;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}
+
+.button-end {
+    visibility: hidden;
+}
+
+.main-container {
+    width: 220px;
+    height: 220px;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.score {
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 4px;
+}
+
+.score-box {
+    text-align: center;
+    width: 100px;
+    margin-right: 5px;
+}

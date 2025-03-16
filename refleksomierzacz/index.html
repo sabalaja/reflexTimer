@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refleksomierzacz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="button-conatiner">
+        <button id="startBtn" onclick="start()" class="button button-start">start</button>
+        <button id="stopBtn"  onclick="stop()"class="button button-end">stop</button>
+    </div>
+    <div id="mainContainer" onclick="containerClick()" class="main-container"></div>
+
+    <div class="score">
+        <div class="score-box">
+            <label>Najszybsze klikniecie</label>
+            <div id="fastestScore"></div>
+        </div>
+        <div class="score-box">
+            <label>Srednia szybkosc kliniec</label>
+            <div id="averageScore"></div>
+        </div>
+        <div class="score-box">
+            <label>Najwolniejsze klikniecie</label>
+            <div id="slowestScore"></div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
