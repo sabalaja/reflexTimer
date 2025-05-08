@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="input-counter">
+        <label for="counter">Podaj ile razy chcesz kliknąć</label>
+        <input type="number" id="counter" value="5" min="0" max="100" step="1">
+    </div>
     <div class="button-conatiner">
         <button id="startBtn" onclick="start()" class="button button-start">start</button>
         <button id="stopBtn"  onclick="stop()"class="button button-end">stop</button>
@@ -27,6 +31,10 @@
             <label>Najwolniejsze klikniecie</label>
             <div id="slowestScore"></div>
         </div>
+    </div>
+    <div id="game-is-over">
+        <strong>KONIEC GRY</strong>
+        <span>Naciśnij start zeby zacząć jeszcze raz</span>
     </div>
     <script src="js/script.js"></script>
 </body>

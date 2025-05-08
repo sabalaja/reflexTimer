@@ -11,6 +11,22 @@ body {
     height: 98vh;
 }
 
+.input-counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-counter input {
+    width: 100px;
+    height: 30px;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
 .button-conatiner {
     display: flex;
 }
@@ -53,4 +69,20 @@ body {
     text-align: center;
     width: 100px;
     margin-right: 5px;
+}
+
+#game-is-over {
+    visibility: hidden;
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    background-color: tomato;
+    color: white;
+    font-size: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 50%;
 }
